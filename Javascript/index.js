@@ -17,7 +17,7 @@ window.onload = () => {
   document.getElementById("start-button").onclick = () => {
     boat = new Boat();
     frame = 1;
-    // assign events to left and right arrow keys
+    // assign events to left, right, up and down arrow keys
     document.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "ArrowLeft": // left arrow
