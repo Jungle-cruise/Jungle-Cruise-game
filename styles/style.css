@@ -8,4 +8,5 @@ body {
 canvas {
   border: 3px solid black;
   background-color: lightblue;
+  opacity: initial;
 }
