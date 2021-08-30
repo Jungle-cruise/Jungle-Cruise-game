@@ -1,106 +1,107 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-function drawRiver() {
-  const river = new Image();
-  river.src = "../Assets/river.jpg";
-  river.onload = function () {
-    ctx.drawImage(road, 0, 0, 600, 600);
-  };
-}
-
-drawRiver();
-
-const carImage = new Image();
+const boatImage = new Image();
 // Connects image to the image file
-carImage.src = "./images/car.png";
-const roadImage = new Image();
+boatImage.src = "../Assets/boat.png";
+const riverImage = new Image();
 // Connects image to the image file
-roadImage.src = "./images/road.png";
+riverImage.src = "../Assets/river.jpg";
 
-let car;
+let boat;
 let obstacles = [];
 let frame;
 let animationID;
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
-    car = new Car();
+    boat = new Boat();
     frame = 1;
     // assign events to left and right arrow keys
     document.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "ArrowLeft": // left arrow
-          car.moveLeft();
+          boat.moveLeft();
           break;
         case "ArrowRight": // right arrow
-          car.moveRight();
+          boat.moveRight();
+          break;
+        case "ArrowUp": // right arrow
+          boat.moveUp();
+          break;
+        case "ArrowDown": // right arrow
+          boat.moveDown();
           break;
       }
     }); // end assign events to left and right arrow keys
-    updateCanvas()
+    updateCanvas();
   };
 };
 
 function updateCanvas() {
   ctx.fillStyle = "#870007";
-  ctx.clearRect(0, 0, 500, 700);
-  ctx.drawImage(roadImage, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(carImage, car.x, car.y, car.width, car.height);
+  ctx.clearRect(0, 0, 600, 700);
+  ctx.drawImage(riverImage, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(boatImage, boat.x, boat.y, boat.width, boat.height);
   if (frame % 140 == 0) {
     // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
   let collisionDetectedBoolean = false;
   obstacles.forEach((obstacle) => {
-    obstacle.moveDown()
-    obstacle.checkIfOffscreen()
+    obstacle.moveDown();
+    obstacle.checkIfOffscreen();
     if (obstacle.offScreen && obstacle.alreadyCounted === false) {
-      car.increaseScore()
-      obstacle.updateScore()
+      boat.increaseScore();
+      obstacle.updateScore();
     }
-    if (obstacle.detectCollision(car)) {
-      collisionDetectedBoolean = true
-      return
+    if (obstacle.detectCollision(boat)) {
+      collisionDetectedBoolean = true;
+      return;
     }
-    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height)
+    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
   });
-  console.log(car.score)
+  console.log(boat.score);
 
-  ctx.font = '30px Arial'
-  ctx.fillStyle = 'white'
-  ctx.fillText('Score: ' + car.score, 70, 50)
-  
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText("Score: " + boat.score, 70, 50);
+
   if (collisionDetectedBoolean) {
-    cancelAnimationFrame(animationID)
-    document.getElementById("scoreboard").textContent = car.score
-    document.getElementById("game-over").style.display = "block"
+    cancelAnimationFrame(animationID);
+    document.getElementById("scoreboard").textContent = boat.score;
+    document.getElementById("game-over").style.display = "block";
     setTimeout(() => {
-    window.location.reload()
-    },7000);
-    
+      window.location.reload();
+    }, 7000);
   } else {
     frame++;
-    animationID = requestAnimationFrame(updateCanvas)
+    animationID = requestAnimationFrame(updateCanvas);
   }
   // frame = frame + 1
   // frame updates go here
 }
 
-class Car {
+class Boat {
   constructor() {
     this.score = 0;
-    this.width = 50;
-    this.height = 100;
+    this.width = 75;
+    this.height = 150;
     this.x = canvas.width / 2 - this.width / 2;
     this.y = canvas.height - this.height - 20;
   }
 
   moveLeft() {
-    this.x -= 15;
+    this.x -= 20;
   }
   moveRight() {
-    this.x += 15;
+    this.x += 20;
+  }
+  moveUp() {
+    this.y -= 20;
+  }
+  moveDown() {
+    this.y += 20;
   }
   increaseScore() {
     this.score += 1;
@@ -137,12 +138,12 @@ class Obstacle {
     this.alreadyCounted = true;
   }
 
-  detectCollision(car) {
+  detectCollision(boat) {
     if (
-      car.x < this.x + this.width &&
-      car.x + car.width > this.x &&
-      car.y < this.y + this.height &&
-      car.y + car.height > this.y
+      boat.x < this.x + this.width &&
+      boat.x + boat.width > this.x &&
+      boat.y < this.y + this.height &&
+      boat.y + boat.height > this.y
     ) {
       console.log("collision detected");
       return true;
@@ -154,4 +155,3 @@ class Obstacle {
     this.y += 3;
   }
 }
-
