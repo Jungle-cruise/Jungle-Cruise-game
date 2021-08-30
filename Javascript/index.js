@@ -6,7 +6,7 @@ const boatImage = new Image();
 boatImage.src = "../Assets/boat.png";
 const riverImage = new Image();
 // Connects image to the image file
-riverImage.src = "../Assets/river.jpg";
+riverImage.src = "../Assets/background.jpg";
 
 let boat;
 let obstacles = [];
