@@ -2,11 +2,17 @@ body {
   margin: 0;
   padding: 0;
   background-image: url("../Assets/bodybackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
+}
+
+body > img {
+  margin-top: 0vh;
 }
 
 canvas {
   border: 3px solid black;
-  background-color: lightblue;
-  opacity: initial;
+  background-image: url(../Assets/river.jpg);
+  opacity: 1;
 }
