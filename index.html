@@ -4,13 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jungle Cruise</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <title>Jungle Cruise</title>
   </head>
   <body>
     <img src="./Assets/header.png" alt="Jungle Cruise" />
     <h2>Dodge the obstacles!</h2>
     <canvas width="600" height="600"> </canvas>
+    <div class="game-intro">
+      <img src="./images/logo.png" alt="" class="logo-img" />
+      <br />
+      <button id="start-button">StartGame</button>
+      <p>Use the left and right arrow to control the car!</p>
+      <img src="./images/arrows.png" alt="" class="arrows-img" />
+    </div>
+    <div id="game-board">
+      <canvas id="canvas" width="500" height="700"></canvas>
+    </div>
+<div id="game-over">
+    <h2 class="gameovertext">Game Over!</h2>
+    <h2 class="yourscore">Your Final Score<br><span id="scoreboard">0</span></h2>
+</div>
     <script src="/Javascript/index.js"></script>
   </body>
 </html>
