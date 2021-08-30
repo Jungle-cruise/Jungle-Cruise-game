@@ -43,7 +43,7 @@ function updateCanvas() {
   ctx.clearRect(0, 0, 600, 700);
   ctx.drawImage(riverImage, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(boatImage, boat.x, boat.y, boat.width, boat.height);
-  if (frame % 140 == 0) {
+  if (frame % 180 == 0) {
     // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
@@ -73,7 +73,7 @@ function updateCanvas() {
     document.getElementById("game-over").style.display = "block";
     setTimeout(() => {
       window.location.reload();
-    }, 7000);
+    }, 4000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
