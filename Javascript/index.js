@@ -11,6 +11,9 @@ riverImage.src = "../Assets/background.jpg";
 const alligatorImage = new Image();
 alligatorImage.src = "../Assets/alligator.png";
 
+const mask1Image = new Image();
+mask1Image.src = "../Assets/mask1.png";
+
 let boat;
 let obstacles = [];
 let frame;
@@ -20,6 +23,7 @@ window.onload = () => {
   document.getElementById("start-button").onclick = () => {
     boat = new Boat();
     alligator = new Alligator();
+    mask1 = new Mask();
     frame = 1;
     // assign events to left, right, up and down arrow keys
     document.addEventListener("keydown", (e) => {
@@ -61,6 +65,8 @@ function updateCanvas() {
       alligator.height
     );
     alligator.move(boat.x, boat.y);
+    ctx.drawImage(mask1Image, mask1.x, mask1.y);
+    mask1.move();
   }
   let collisionDetectedBoolean = false;
   obstacles.forEach((obstacle) => {
@@ -87,7 +93,7 @@ function updateCanvas() {
     document.getElementById("game-over").style.display = "block";
     setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    }, 4000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
@@ -193,8 +199,8 @@ const backgroundImage = {
 
 class Alligator {
   constructor() {
-    this.width = 71;
-    this.height = 30;
+    this.width = 85;
+    this.height = 35;
     this.x = Math.floor(Math.random() * canvas.width);
     this.y = Math.floor(Math.random() * canvas.height);
   }
@@ -206,9 +212,21 @@ class Alligator {
       this.x -= 0.2;
     }
     if (this.y < y) {
-      this.y += 0.2;
+      this.y += 0.3;
     } else {
-      this.y -= 0.2;
+      this.y -= 0.3;
     }
   }
+}
+
+class Mask {
+  constructor() {
+    this.x = -50;
+    this.y = Math.floor(Math.random() * (canvas.height - 50));
+  }
+
+  move() {
+    this.x += 1;
+  }
+  //   this.y -= 0.3;
 }
