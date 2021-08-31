@@ -74,7 +74,7 @@ function updateCanvas() {
     document.getElementById("game-over").style.display = "block";
     setTimeout(() => {
       window.location.reload();
-    }, 4000);
+    }, 2000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
@@ -86,8 +86,8 @@ function updateCanvas() {
 class Boat {
   constructor() {
     this.score = 0;
-    this.width = 75;
-    this.height = 150;
+    this.width = 50;
+    this.height = 100;
     this.x = canvas.width / 2 - this.width / 2;
     this.y = canvas.height - this.height - 20;
   }
