@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Trade+Winds&display=swap');
+
 body {
   margin: 0;
   margin-top: 5vh;
@@ -23,6 +25,15 @@ body {
   max-width: 100vw;
   margin-top: 5vh;
   max-height: 100vh;
+}
+
+.boat-button {
+  font-family: 'Trade Winds', cursive; 
+}
+
+.youtube-video {
+  font-family: 'Trade Winds', cursive; 
+  color: #fceb65;
 }
 
 body > img {
@@ -52,10 +63,13 @@ canvas {
 
 h1 {
   text-align: center;
-  color: #793209ef;
+  color: #fceb65;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #995526;
 }
 
 .div3 {
+  font-family: 'Trade Winds', cursive; 
   width: 20vw;
   display: flex;
   flex-direction: column;
@@ -64,6 +78,8 @@ h1 {
 }
 
 .div2 {
+  color: #fceb65;
+  font-family: 'Trade Winds', cursive;
   width: 60vw;
 }
 
