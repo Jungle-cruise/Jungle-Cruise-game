@@ -3,6 +3,18 @@ body {
   padding: 0;
   background-image: url("../Assets/bodybackground.jpg");
   background-repeat: no-repeat;
+  background-size: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+}
+
+.game-body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../Assets/bodybackground.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   display: flex;
@@ -38,4 +50,20 @@ canvas {
 
 #game-over {
   display: none;
+}
+
+.boat-button {
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgb(207, 207, 207);
+}
+
+.boat-button:hover {
+  border: 1px transparent black;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 8px #f9f8fc;
+  cursor: pointer;
 }

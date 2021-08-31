@@ -92,10 +92,10 @@ class Boat {
   }
 
   moveLeft() {
-    this.x -= 20;
+    this.x -= 25;
   }
   moveRight() {
-    this.x += 20;
+    this.x += 25;
   }
   moveUp() {
     this.y -= 20;

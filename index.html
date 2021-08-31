@@ -7,28 +7,21 @@
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Jungle Cruise</title>
   </head>
-  <body>
+  <body class="index-body">
     <div class="div1"></div>
     <div class="div2">
       <img src="./Assets/header.png" alt="Jungle Cruise" />
-      <div class="game-intro">
-        <br />
-        <button id="start-button">StartGame</button>
-        <p>Use the left and right arrow to control the boat!</p>
-        <img src="./images/arrows.png" alt="" class="arrows-img" />
-      </div>
-      <div id="game-board">
-        <canvas id="canvas" width="600" height="700"></canvas>
-      </div>
+      <h1>The game!</h1>
+      <form method="get" action="/game.html">
+        <button class="boat-button" type="submit">Get on the boat!⛵</button>
+      </form>
+      <video id="video-intro" width="640" height="480" autoplay>
+        <source src="./Assets/boat-video.mp4" type="video/mp4" />
+        <source src="movie.ogg" type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
     </div>
-    <div class="div3">
-      <div id="game-over">
-        <h2 class="gameovertext">Game Over!</h2>
-        <h2 class="yourscore">
-          Your Final Score<br /><span id="scoreboard">0</span>
-        </h2>
-      </div>
-    </div>
+    <div class="div3"></div>
     <script src="/Javascript/index.js"></script>
   </body>
 </html>
