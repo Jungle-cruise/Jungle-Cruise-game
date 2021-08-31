@@ -29,20 +29,22 @@ body > img {
 }
 
 canvas {
-  border: 3px solid black;
-  background-image: url(../Assets/river.jpg);
+  border: 2px solid black;
+  background-image: url(../Assets/jungle.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   opacity: 1;
 }
 
 .div1 {
-    width: 20vw;
+  width: 20vw;
 }
 
 .youtube-video {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
