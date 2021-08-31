@@ -40,8 +40,9 @@ window.onload = () => {
 
 function updateCanvas() {
   ctx.fillStyle = "#870007";
-  ctx.clearRect(0, 0, 600, 700);
-  ctx.drawImage(riverImage, 0, 0, canvas.width, canvas.height);
+  backgroundImage.move();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  backgroundImage.draw();
   ctx.drawImage(boatImage, boat.x, boat.y, boat.width, boat.height);
   if (frame % 180 == 0) {
     // let obstacle = new Obstacle()
@@ -155,3 +156,24 @@ class Obstacle {
     this.y += 3;
   }
 }
+
+const backgroundImage = {
+  img: riverImage,
+  x: 0,
+  y: 0,
+  speed: -0.4,
+
+  move: function () {
+    this.y -= this.speed;
+    this.y %= canvas.height;
+  },
+
+  draw: function () {
+    ctx.drawImage(this.img, 0, this.y);
+    if (this.speed > 0) {
+      ctx.drawImage(this.img, 0, this.y + this.img.height);
+    } else {
+      ctx.drawImage(this.img, 0, this.y - canvas.height);
+    }
+  },
+};

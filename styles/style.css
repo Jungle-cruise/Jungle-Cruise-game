@@ -28,7 +28,9 @@ body > img {
 
 canvas {
   border: 3px solid black;
-  background-image: url(../Assets/river.jpg);
+  background-image: url(../Assets/jungle.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   opacity: 1;
 }
 
