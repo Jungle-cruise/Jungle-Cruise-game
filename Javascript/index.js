@@ -65,8 +65,6 @@ function updateCanvas() {
       alligator.height
     );
     alligator.move(boat.x, boat.y);
-    ctx.drawImage(mask1Image, mask1.x, mask1.y);
-    mask1.move();
   }
   let collisionDetectedBoolean = false;
   obstacles.forEach((obstacle) => {
@@ -228,5 +226,4 @@ class Mask {
   move() {
     this.x += 1;
   }
-  //   this.y -= 0.3;
 }
