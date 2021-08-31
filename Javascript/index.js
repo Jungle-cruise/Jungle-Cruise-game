@@ -8,6 +8,9 @@ const riverImage = new Image();
 // Connects image to the image file
 riverImage.src = "../Assets/background.jpg";
 
+const alligatorImage = new Image();
+alligatorImage.src = "../Assets/alligator.png";
+
 let boat;
 let obstacles = [];
 let frame;
@@ -16,6 +19,7 @@ let animationID;
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
     boat = new Boat();
+    alligator = new Alligator();
     frame = 1;
     // assign events to left, right, up and down arrow keys
     document.addEventListener("keydown", (e) => {
@@ -48,6 +52,16 @@ function updateCanvas() {
     // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
+  if (boat.score > 2) {
+    ctx.drawImage(
+      alligatorImage,
+      alligator.x,
+      alligator.y,
+      alligator.width,
+      alligator.height
+    );
+    alligator.move(boat.x, boat.y);
+  }
   let collisionDetectedBoolean = false;
   obstacles.forEach((obstacle) => {
     obstacle.moveDown();
@@ -62,7 +76,6 @@ function updateCanvas() {
     }
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
   });
-  console.log(boat.score);
 
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
@@ -177,3 +190,25 @@ const backgroundImage = {
     }
   },
 };
+
+class Alligator {
+  constructor() {
+    this.width = 71;
+    this.height = 30;
+    this.x = Math.floor(Math.random() * canvas.width);
+    this.y = Math.floor(Math.random() * canvas.height);
+  }
+
+  move(x, y) {
+    if (this.x < x) {
+      this.x += 0.2;
+    } else {
+      this.x -= 0.2;
+    }
+    if (this.y < y) {
+      this.y += 0.2;
+    } else {
+      this.y -= 0.2;
+    }
+  }
+}
