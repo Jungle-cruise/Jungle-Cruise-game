@@ -89,7 +89,7 @@ function updateCanvas() {
     document.getElementById("game-over-video").play();
     setTimeout(() => {
       window.location.reload();
-    }, 5000);
+    }, 6000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
