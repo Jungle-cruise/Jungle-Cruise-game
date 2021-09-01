@@ -132,7 +132,7 @@ function updateCanvas() {
     document.getElementById("game-over-video").play();
     setTimeout(() => {
       window.location.reload();
-    }, 6000);
+    }, 6200);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
