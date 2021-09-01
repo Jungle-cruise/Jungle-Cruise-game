@@ -40,6 +40,13 @@ window.onload = () => {
     alligator = new Alligator();
     frame = 1;
     // assign events to left, right, up and down arrow keys
+    // if (
+    //   boat.x + boat.width + 10 ===
+    //   canvas.width ||
+    //   boat.x === 10 ||
+    //   boat.y === 10 ||
+    //   boat.y + boat.height === canvas.height
+    // )
     document.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "ArrowLeft": // left arrow
@@ -65,9 +72,6 @@ function updateCanvas() {
     boats.img = boatImageUp;
   });
 
-  function logKey(e) {
-    log.textContent += ` ${e.code}`;
-  }
   ctx.fillStyle = "#870007";
   backgroundImage.move();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
