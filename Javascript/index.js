@@ -85,9 +85,11 @@ function updateCanvas() {
     cancelAnimationFrame(animationID);
     document.getElementById("scoreboard").textContent = boat.score;
     document.getElementById("game-over").style.display = "block";
+    document.getElementById("game-over-video").style.display = "block";
+    document.getElementById("game-over-video").play();
     setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    }, 5000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);

@@ -7,24 +7,34 @@
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Jungle Cruise</title>
   </head>
-  <body class="index-body">
-    <div class="youtube-video">
-      <h1>Have you seen the movie? <br>That was just the start. <br>Wait til you play the game!</h1>
-      <iframe width="400" height="260" src="https://www.youtube.com/embed/f_HvoipFcA8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="div2">
-      <img src="./Assets/header.png" alt="Jungle Cruise" />
-      <h1>The game!</h1>
-      <form method="get" action="/game.html">
-        <button class="boat-button" type="submit">Get on the boat!⛵</button>
-      </form>
-      <video id="video-intro" width="640" height="480" autoplay>
-        <source src="./Assets/boat-video.mp4" type="video/mp4" />
-        <source src="movie.ogg" type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="div3">???</div>
+  <body class="index-body game-body">
+    <section class="row">
+      <div class="youtube-video column-30">
+        <h1>Have you seen the movie? <br>That was just the start. <br>Wait til you play the game!</h1>
+        <iframe width="400" height="260" src="https://www.youtube.com/embed/f_HvoipFcA8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="div2 column-40">
+       <div class="image-holder"> 
+         <img src="./Assets/header.png" alt="Jungle Cruise" />
+        </div>
+        <h1>The game!</h1>
+        <form class="button-holder" method="get" action="/game.html">
+          <button class="boat-button" type="submit">Get on the boat!⛵</button>
+        </form>
+        <div class="video-holder">
+          <video id="video-intro" width="640" height="480" autoplay>
+            <source src="./Assets/boat-video.mp4" type="video/mp4" />
+            <source src="movie.ogg" type="video/ogg" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="div3 column-30">
+      </div>
+    </section>
+    <audio autoplay>
+      <source src="./Assets/intro-audio.mp3" type="audio/mpeg" />
+    </audio>
     <script src="/Javascript/index.js"></script>
   </body>
 </html>

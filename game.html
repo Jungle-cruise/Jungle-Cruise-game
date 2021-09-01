@@ -8,17 +8,25 @@
     <title>Jungle Cruise</title>
   </head>
   <body class="game-body">
-    <div class="div1">
-      <div class="game-intro">
-        <button id="start-button">StartGame</button>
-        <p>Use the arrows to control the boat!</p>
+    <section class="row">
+      <div class="column-30">
+        <div class="game-intro">
+          <button id="start-button">Start Game</button>
+          <p>Use the arrows to control the boat!</p>
+        </div>
       </div>
-    </div>
-    <div class="div2">
-      <div id="game-board">
-        <canvas id="canvas" width="600" height="800"></canvas>
+      <div class="column-40">
+        <div id="game-board">
+          <canvas id="canvas" width="600" height="800"></canvas>
+          <video id="game-over-video" width="600" height="800" >
+            <source src="./Assets/endclip.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
-    </div>
+      <div class="column-30">
+      </div>
+    </section>
     <div class="div3">
       <div id="game-over">
         <h2 class="gameovertext">Game Over!</h2>
