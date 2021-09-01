@@ -1,15 +1,33 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const boatImage = new Image();
+const boatImageUp = new Image();
 // Connects image to the image file
-boatImage.src = "../Assets/boat.png";
+boatImageUp.src = "../Assets/boatUp.png";
+
+const boatImageR = new Image();
+boatImageR.src = "../Assets/boatR.png";
+
+const boatImageL = new Image();
+boatImageL.src = "../Assets/boatL.png";
+
+let boats = {
+  img: boatImageUp,
+};
+
 const riverImage = new Image();
 // Connects image to the image file
 riverImage.src = "../Assets/background.jpg";
 
-const alligatorImage = new Image();
-alligatorImage.src = "../Assets/alligator.png";
+const alligatorImageR = new Image();
+alligatorImageR.src = "../Assets/alligator.png";
+
+const alligatorImageL = new Image();
+alligatorImageL.src = "../Assets/alligatorL.png";
+
+let alligatorLR = {
+  img: alligatorImageR,
+};
 
 let boat;
 let obstacles = [];
@@ -47,20 +65,25 @@ function updateCanvas() {
   backgroundImage.move();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   backgroundImage.draw();
-  ctx.drawImage(boatImage, boat.x, boat.y, boat.width, boat.height);
+  ctx.drawImage(boats.img, boat.x, boat.y, boat.width, boat.height);
   if (frame % 180 == 0) {
     // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
   if (boat.score > 2) {
     ctx.drawImage(
-      alligatorImage,
+      alligatorLR.img,
       alligator.x,
       alligator.y,
       alligator.width,
       alligator.height
     );
     alligator.move(boat.x, boat.y);
+    if (boat.x > alligator.x) {
+      alligatorLR.img = alligatorImageR;
+    } else {
+      alligatorLR.img = alligatorImageL;
+    }
   }
   let collisionDetectedBoolean = false;
   obstacles.forEach((obstacle) => {
@@ -74,8 +97,14 @@ function updateCanvas() {
       collisionDetectedBoolean = true;
       return;
     }
+
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
   });
+
+  if (alligator.detectCollision(boat)) {
+    collisionDetectedBoolean = true;
+    // return;
+  }
 
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
@@ -101,23 +130,27 @@ function updateCanvas() {
 class Boat {
   constructor() {
     this.score = 0;
-    this.width = 50;
-    this.height = 100;
+    this.width = 85;
+    this.height = 1.25 * this.width;
     this.x = canvas.width / 2 - this.width / 2;
     this.y = canvas.height - this.height - 20;
   }
 
   moveLeft() {
     this.x -= 25;
+    boats.img = boatImageL;
   }
   moveRight() {
     this.x += 25;
+    boats.img = boatImageR;
   }
   moveUp() {
     this.y -= 20;
+    boats.img = boatImageUp;
   }
   moveDown() {
     this.y += 20;
+    boats.img = boatImageUp;
   }
   increaseScore() {
     this.score += 1;
@@ -168,7 +201,7 @@ class Obstacle {
   }
   // obstacles move down throughout frame
   moveDown() {
-    this.y += 3;
+    this.y += 2;
   }
 }
 
@@ -195,8 +228,8 @@ const backgroundImage = {
 
 class Alligator {
   constructor() {
-    this.width = 71;
     this.height = 30;
+    this.width = 2.36 * this.height;
     this.x = Math.floor(Math.random() * canvas.width);
     this.y = Math.floor(Math.random() * canvas.height);
   }
@@ -212,5 +245,18 @@ class Alligator {
     } else {
       this.y -= 0.2;
     }
+  }
+
+  detectCollision(boat) {
+    if (
+      boat.x < this.x + this.width &&
+      boat.x + boat.width > this.x &&
+      boat.y < this.y + this.height &&
+      boat.y + boat.height > this.y
+    ) {
+      console.log("collision detected");
+      return true;
+    }
+    return false;
   }
 }

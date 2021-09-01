@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Trade+Winds&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Trade+Winds&display=swap");
 
 body {
-  
 }
 
 .game-body {
@@ -18,12 +17,12 @@ body {
 }
 
 .boat-button {
-  font-family: 'Trade Winds', cursive; 
+  font-family: "Trade Winds", cursive;
   color: #c3853f;
 }
 
 .youtube-video {
-  font-family: 'Trade Winds', cursive; 
+  font-family: "Trade Winds", cursive;
   color: #fceb65;
 }
 
@@ -33,7 +32,7 @@ body > img {
 
 canvas {
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
   z-index: 1;
   border: 2px solid black;
@@ -44,9 +43,9 @@ canvas {
 }
 
 .column-30 {
-flex: 1.5;
-align-self: center;
-text-align: right;
+  flex: 1.5;
+  align-self: center;
+  text-align: right;
 }
 
 .column-40 {
@@ -79,7 +78,7 @@ h1 {
 }
 
 .div3 {
-  font-family: 'Trade Winds', cursive; 
+  font-family: "Trade Winds", cursive;
   width: 20vw;
   display: flex;
   flex-direction: column;
@@ -89,7 +88,7 @@ h1 {
 
 .div2 {
   color: #fceb65;
-  font-family: 'Trade Winds', cursive;
+  font-family: "Trade Winds", cursive;
 }
 
 #game-over {
@@ -113,10 +112,10 @@ h1 {
 }
 
 #start-button {
-padding: 3rem 10rem;
-font-size: 3rem;
-border-radius: 0.5rem;
-border: 2px solid darkgoldenrod;
+  padding: 3rem 10rem;
+  font-size: 3rem;
+  border-radius: 0.5rem;
+  border: 2px solid darkgoldenrod;
 }
 
 .image-holder {
@@ -133,15 +132,15 @@ border: 2px solid darkgoldenrod;
 }
 
 #game-board {
-position: relative;
-height: 800px;
-width: 600px;
-margin: 0 auto;
+  position: relative;
+  height: 800px;
+  width: 600px;
+  margin: 0 auto;
 }
 
 #game-over-video {
   position: absolute;
-  top: 0; 
+  top: 0;
   left: 0;
   z-index: 2;
   display: none;
