@@ -32,14 +32,14 @@ let alligatorLR = {
 const treeImage = new Image();
 treeImage.src = "../Assets/treetrunkH.png";
 
-const rockImage = new Image();
-rockImage.src = "../Assets/rock.png";
+const vtreeImage = new Image();
+vtreeImage.src = "../Assets/treetrunk.png";
 
 let boat;
 let obstacles = [];
 let frame;
 let animationID;
-let obstacleImages = [treeImage, rockImage];
+let obstacleImages = [treeImage, vtreeImage];
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
