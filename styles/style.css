@@ -17,6 +17,7 @@ body {
 }
 
 .boat-button {
+  font-size: 2rem;
   font-family: "Trade Winds", cursive;
   color: #c3853f;
 }
@@ -71,6 +72,7 @@ canvas {
 }
 
 h1 {
+  font-size: 3rem;
   text-align: center;
   color: #fceb65;
   -webkit-text-stroke-width: 0.5px;
