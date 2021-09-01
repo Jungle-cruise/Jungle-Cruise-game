@@ -29,10 +29,17 @@ let alligatorLR = {
   img: alligatorImageR,
 };
 
+const treeImage = new Image();
+treeImage.src = "../Assets/treetrunkH.png";
+
+const vtreeImage = new Image();
+vtreeImage.src = "../Assets/treetrunk.png";
+
 let boat;
 let obstacles = [];
 let frame;
 let animationID;
+let obstacleImages = [treeImage, vtreeImage];
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
@@ -65,10 +72,6 @@ function updateCanvas() {
   document.addEventListener("keyup", function (e) {
     boats.img = boatImageUp;
   });
-
-  //       boat.x === 10 ||
-  //     boat.y === 10 ||
-  //     boat.y + boat.height === canvas.height;
 
   ctx.fillStyle = "#870007";
   backgroundImage.move();
@@ -107,7 +110,13 @@ function updateCanvas() {
       return;
     }
 
-    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    ctx.drawImage(
+      obstacle.image,
+      obstacle.x,
+      obstacle.y,
+      obstacle.width,
+      obstacle.height
+    );
   });
 
   if (alligator.detectCollision(boat)) {
@@ -127,7 +136,7 @@ function updateCanvas() {
     document.getElementById("game-over-video").play();
     setTimeout(() => {
       window.location.reload();
-    }, 6000);
+    }, 6200);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
@@ -168,11 +177,11 @@ class Boat {
 
 class Obstacle {
   constructor() {
-    this.width = Math.max(
-      Math.floor(Math.random() * canvas.width * 0.65 * 0.85),
-      140
-    );
-    this.height = 20;
+    // // this.width = Math.max(
+    //   Math.floor(Math.random() * canvas.width * 0.65 * 0.85),
+    //   140
+    // );
+    // this.height = 20;
     let tempX =
       Math.floor(Math.random() * (canvas.width * 0.85)) +
       (canvas.width * 0.27) / 2;
@@ -184,6 +193,10 @@ class Obstacle {
     this.y = 0;
     this.offScreen = false;
     this.alreadyCounted = false;
+    this.image =
+      obstacleImages[Math.floor(Math.random() * obstacleImages.length)];
+    this.width = this.image.width * 0.2;
+    this.height = this.image.height * 0.2;
   }
 
   checkIfOffscreen() {
