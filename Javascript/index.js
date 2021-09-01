@@ -39,14 +39,8 @@ window.onload = () => {
     boat = new Boat();
     alligator = new Alligator();
     frame = 1;
+
     // assign events to left, right, up and down arrow keys
-    // if (
-    //   boat.x + boat.width + 10 ===
-    //   canvas.width ||
-    //   boat.x === 10 ||
-    //   boat.y === 10 ||
-    //   boat.y + boat.height === canvas.height
-    // )
     document.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "ArrowLeft": // left arrow
@@ -71,6 +65,10 @@ function updateCanvas() {
   document.addEventListener("keyup", function (e) {
     boats.img = boatImageUp;
   });
+
+  //       boat.x === 10 ||
+  //     boat.y === 10 ||
+  //     boat.y + boat.height === canvas.height;
 
   ctx.fillStyle = "#870007";
   backgroundImage.move();
@@ -148,19 +146,19 @@ class Boat {
   }
 
   moveLeft() {
-    this.x -= 25;
+    this.x = Math.max(this.x - 25, 25);
     boats.img = boatImageL;
   }
   moveRight() {
-    this.x += 25;
+    this.x = Math.min(this.x + 25, canvas.width - this.width - 25);
     boats.img = boatImageR;
   }
   moveUp() {
-    this.y -= 20;
+    this.y = Math.max(this.y - 20, 25);
     boats.img = boatImageUp;
   }
   moveDown() {
-    this.y += 20;
+    this.y = Math.min(this.y + 20, canvas.height - this.height - 20);
     boats.img = boatImageUp;
   }
   increaseScore() {
