@@ -61,6 +61,13 @@ window.onload = () => {
 };
 
 function updateCanvas() {
+  document.addEventListener("keyup", function (e) {
+    boats.img = boatImageUp;
+  });
+
+  function logKey(e) {
+    log.textContent += ` ${e.code}`;
+  }
   ctx.fillStyle = "#870007";
   backgroundImage.move();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
