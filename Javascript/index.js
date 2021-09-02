@@ -35,11 +35,15 @@ treeImage.src = "../Assets/treetrunkH.png";
 const vtreeImage = new Image();
 vtreeImage.src = "../Assets/treetrunk.png";
 
+const shipwreckImage = new Image();
+shipwreckImage.src = "../Assets/wreck.png";
+
 let boat;
 let obstacles = [];
 let frame;
 let animationID;
 let obstacleImages = [treeImage, vtreeImage];
+let shipWreckObstacles = [];
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
@@ -70,18 +74,25 @@ window.onload = () => {
 
 function updateCanvas() {
   document.addEventListener("keyup", function (e) {
-    boats.img = boatImageUp;
+    boat.image = boatImageUp
+    boat.redefineBoatSize()
   });
 
   ctx.fillStyle = "#870007";
   backgroundImage.move();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   backgroundImage.draw();
-  ctx.drawImage(boats.img, boat.x, boat.y, boat.width, boat.height);
+  ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
   if (frame % 180 == 0) {
     // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
+
+  if (frame % 1700 == 0) {
+    // let obstacle = new Obstacle()
+    shipWreckObstacles.push(new shipWreckObstacle());
+  }
+
   if (boat.score > 2) {
     ctx.drawImage(
       alligatorLR.img,
@@ -119,6 +130,21 @@ function updateCanvas() {
     );
   });
 
+  shipWreckObstacles.forEach((obstacle) => {
+    obstacle.moveDown();
+    obstacle.checkIfOffscreen();
+    if (obstacle.offScreen && obstacle.alreadyCounted === false) {
+      boat.increaseScore();
+      obstacle.updateScore();
+    }
+    if (obstacle.detectCollision(boat)) {
+      collisionDetectedBoolean = true;
+      return;
+    }
+
+    ctx.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+  });
+
   if (alligator.detectCollision(boat)) {
     collisionDetectedBoolean = true;
     // return;
@@ -148,13 +174,36 @@ function updateCanvas() {
 class Boat {
   constructor() {
     this.score = 0;
-    this.width = 85;
-    this.height = 1.25 * this.width;
+    this.image = boatImageUp
+    this.redefineBoatSize()
     this.x = canvas.width / 2 - this.width / 2;
     this.y = canvas.height - this.height - 20;
   }
 
+  redefineBoatSize() {
+    this.width = this.image.width * 0.2;
+    this.height = this.image.height * 0.2;
+  }
+
   moveLeft() {
+    this.x = this.x <= 75 ? this.x : this.x - 25;
+    this.image = boatImageL;
+    this.redefineBoatSize()
+  }
+  moveRight() {
+    this.x = this.x >= 450 ? this.x : this.x + 25;
+    this.image = boatImageR;
+    this.redefineBoatSize()
+  }
+  moveUp() {
+    this.y -= 20;
+    this.image = boatImageUp;
+    this.redefineBoatSize()
+  }
+  moveDown() {
+    this.y += 20;
+    this.image = boatImageUp;
+    this.redefineBoatSize()
     this.x = Math.max(this.x - 25, 25);
     boats.img = boatImageL;
   }
@@ -227,6 +276,55 @@ class Obstacle {
   }
 }
 
+class shipWreckObstacle {
+  constructor() {
+    this.image = shipwreckImage;
+    this.width = this.image.width * 0.15;
+    this.height = this.image.height * 0.15;
+    let tempX =
+      Math.floor(Math.random() * (canvas.width * 0.80)) +
+      (canvas.width * 0.27) / 2;
+      console.log(tempX)
+      console.log(this.width)
+      console.log(canvas.width)
+    if (this.width + tempX > canvas.width * 0.80) {
+      this.x = canvas.width * 0.80 - this.width;
+    } else {
+      this.x = tempX;
+    }
+    this.y = 0;
+    this.offScreen = false;
+    this.alreadyCounted = false;
+  }
+
+  checkIfOffscreen() {
+    if (this.y > canvas.height) {
+      this.offScreen = true;
+    }
+  }
+
+  updateScore() {
+    this.alreadyCounted = true;
+  }
+
+  detectCollision(boat) {
+    if (
+      boat.x < this.x + this.width &&
+      boat.x + boat.width > this.x &&
+      boat.y < this.y + this.height &&
+      boat.y + boat.height > this.y
+    ) {
+      console.log("collision detected");
+      return true;
+    }
+    return false;
+  }
+  // obstacles move down throughout frame
+  moveDown() {
+    this.y += 0.4;
+  }
+}
+
 const backgroundImage = {
   img: riverImage,
   x: 0,
@@ -250,7 +348,7 @@ const backgroundImage = {
 
 class Alligator {
   constructor() {
-    this.height = 30;
+    this.height = 50;
     this.width = 2.36 * this.height;
     this.x = Math.floor(Math.random() * canvas.width);
     this.y = Math.floor(Math.random() * canvas.height);
