@@ -74,8 +74,8 @@ window.onload = () => {
 
 function updateCanvas() {
   document.addEventListener("keyup", function (e) {
-    boat.image = boatImageUp
-    boat.redefineBoatSize()
+    boat.image = boatImageUp;
+    boat.redefineBoatSize();
   });
 
   ctx.fillStyle = "#870007";
@@ -142,7 +142,13 @@ function updateCanvas() {
       return;
     }
 
-    ctx.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    ctx.drawImage(
+      obstacle.image,
+      obstacle.x,
+      obstacle.y,
+      obstacle.width,
+      obstacle.height
+    );
   });
 
   if (alligator.detectCollision(boat)) {
@@ -174,8 +180,8 @@ function updateCanvas() {
 class Boat {
   constructor() {
     this.score = 0;
-    this.image = boatImageUp
-    this.redefineBoatSize()
+    this.image = boatImageUp;
+    this.redefineBoatSize();
     this.x = canvas.width / 2 - this.width / 2;
     this.y = canvas.height - this.height - 20;
   }
@@ -188,22 +194,22 @@ class Boat {
   moveLeft() {
     this.x = this.x <= 75 ? this.x : this.x - 25;
     this.image = boatImageL;
-    this.redefineBoatSize()
+    this.redefineBoatSize();
   }
   moveRight() {
     this.x = this.x >= 450 ? this.x : this.x + 25;
     this.image = boatImageR;
-    this.redefineBoatSize()
+    this.redefineBoatSize();
   }
   moveUp() {
     this.y -= 20;
     this.image = boatImageUp;
-    this.redefineBoatSize()
+    this.redefineBoatSize();
   }
   moveDown() {
     this.y += 20;
     this.image = boatImageUp;
-    this.redefineBoatSize()
+    this.redefineBoatSize();
     this.x = Math.max(this.x - 25, 25);
     boats.img = boatImageL;
   }
@@ -282,13 +288,13 @@ class shipWreckObstacle {
     this.width = this.image.width * 0.15;
     this.height = this.image.height * 0.15;
     let tempX =
-      Math.floor(Math.random() * (canvas.width * 0.80)) +
+      Math.floor(Math.random() * (canvas.width * 0.8)) +
       (canvas.width * 0.27) / 2;
-      console.log(tempX)
-      console.log(this.width)
-      console.log(canvas.width)
-    if (this.width + tempX > canvas.width * 0.80) {
-      this.x = canvas.width * 0.80 - this.width;
+    console.log(tempX);
+    console.log(this.width);
+    console.log(canvas.width);
+    if (this.width + tempX > canvas.width * 0.8) {
+      this.x = canvas.width * 0.8 - this.width;
     } else {
       this.x = tempX;
     }

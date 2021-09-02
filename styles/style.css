@@ -116,13 +116,21 @@ h1 {
 
 #start-button {
   color: #cc9238;
-  font-family: 'Trade Winds', cursive;
+  font-family: "Trade Winds", cursive;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #995526;
   padding: 1.5rem 5rem;
   font-size: 3rem;
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
+}
+
+#start-button:hover {
+  cursor: pointer;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
 }
 
 .image-holder {
@@ -154,8 +162,8 @@ h1 {
 }
 
 .game-intro p {
-  color: #6b3418; 
-  font-family: 'Trade Winds', cursive;
+  color: #6b3418;
+  font-family: "Trade Winds", cursive;
   -webkit-text-stroke-width: 0.75px;
   -webkit-text-stroke-color: #edd174;
   padding: 1.5rem 5rem;
