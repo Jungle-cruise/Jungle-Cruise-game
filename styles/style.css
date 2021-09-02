@@ -96,6 +96,11 @@ h1 {
 
 #game-over {
   display: none;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgb(207, 207, 207);
 }
 
 .boat-button {
@@ -123,14 +128,6 @@ h1 {
   font-size: 3rem;
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
-}
-
-#start-button:hover {
-  cursor: pointer;
-  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-  transform: scale(1.1, 1.1);
-  -webkit-transform: scale(1.1, 1.1);
-  -moz-transform: scale(1.1, 1.1);
 }
 
 .image-holder {
