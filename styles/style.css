@@ -138,6 +138,10 @@ h1 {
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
 }
+
+#home-button:hover {
+  cursor: pointer;
+}
 #start-button {
   color: #cc9238;
   font-family: "Trade Winds", cursive;
@@ -181,7 +185,7 @@ h1 {
   display: none;
 }
 
-p { 
+p {
   color: #6b3418;
   font-family: "Trade Winds", cursive;
   -webkit-text-stroke-width: 0.75px;

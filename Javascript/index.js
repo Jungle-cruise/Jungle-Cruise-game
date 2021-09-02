@@ -49,8 +49,8 @@ document.getElementsByTagName("audio")[0].volume = 0.05;
 
 window.onload = () => {
   document.getElementById("start-button").onclick = (e) => {
-    e.currentTarget.disabled = true
-    console.log(this)
+    e.currentTarget.disabled = true;
+    console.log(this);
     boat = new Boat();
     alligator = new Alligator();
     frame = 1;
@@ -117,7 +117,7 @@ function updateCanvas() {
       obstacle.updateScore();
     }
     if (obstacle.detectCollision(boat)) {
-      document.querySelector("audio").pause()
+      document.querySelector("audio").pause();
       collisionDetectedBoolean = true;
       return;
     }
@@ -153,6 +153,7 @@ function updateCanvas() {
   });
 
   if (alligator.detectCollision(boat)) {
+    document.querySelector("audio").pause();
     collisionDetectedBoolean = true;
     // return;
   }
