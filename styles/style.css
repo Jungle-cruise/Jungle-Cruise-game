@@ -105,6 +105,10 @@ h1 {
   background-color: cadetblue;
 }
 
+#game-over:hover {
+  cursor: pointer;
+}
+
 .boat-button {
   box-sizing: border-box;
   border: 1px solid black;
