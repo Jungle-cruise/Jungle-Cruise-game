@@ -45,8 +45,6 @@ let animationID;
 let obstacleImages = [treeImage, vtreeImage];
 let shipWreckObstacles = [];
 
-document.getElementsByTagName("audio")[0].volume = 0.05;
-
 window.onload = () => {
   document.getElementById("start-button").onclick = (e) => {
     e.currentTarget.disabled = true;
@@ -166,11 +164,14 @@ function updateCanvas() {
     cancelAnimationFrame(animationID);
     document.getElementById("scoreboard").textContent = boat.score;
     document.getElementById("game-over").style.display = "block";
-    document.getElementById("game-over-video").style.display = "block";
-    document.getElementById("game-over-video").play();
+    document.getElementById("losing").play();
+    setTimeout(() => {
+      document.getElementById("game-over-video").style.display = "block";
+      document.getElementById("game-over-video").play();
+    }, 2000);
     setTimeout(() => {
       window.location.reload();
-    }, 6200);
+    }, 7000);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);

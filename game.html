@@ -10,7 +10,7 @@
   <body class="game-body">
     <section class="row">
       <div class="column-30">
-        <div class="game-intro">
+        <div class="firstdiv">
           <form class="button-holder" method="get" action="/index.html">
             <button id="home-button">Back to Home</button>
           </form>
@@ -41,7 +41,10 @@
     </section>
     <div class="div3">
     </div>
-    <audio autoplay>
+    <audio id="losing">
+      <source src="./Assets/losing.mp3" type="audio/mpeg" />
+    </audio>
+    <audio onloadstart="this.volume=0.05" autoplay>
       <source src="./Assets/jungle.mp3" type="audio/mpeg" />
     </audio>
     <script src="/Javascript/index.js"></script>

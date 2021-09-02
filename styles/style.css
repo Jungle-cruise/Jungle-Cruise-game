@@ -137,6 +137,7 @@ h1 {
   font-size: 1rem;
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
+  margin-bottom: 1vh;
 }
 
 #home-button:hover {
@@ -155,6 +156,16 @@ h1 {
 
 #start-button:hover {
   cursor: pointer;
+}
+
+.firstdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-holder {
+  align-self: flex-end;
 }
 
 .image-holder {
