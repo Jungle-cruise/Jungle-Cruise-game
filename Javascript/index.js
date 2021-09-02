@@ -75,21 +75,17 @@ window.onload = () => {
 function updateCanvas() {
   document.addEventListener("keyup", function (e) {
     boat.image = boatImageUp;
-    boat.redefineBoatSize();
   });
 
-  ctx.fillStyle = "#870007";
   backgroundImage.move();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   backgroundImage.draw();
   ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
   if (frame % 180 == 0) {
-    // let obstacle = new Obstacle()
     obstacles.push(new Obstacle());
   }
 
   if (frame % 1700 == 0) {
-    // let obstacle = new Obstacle()
     shipWreckObstacles.push(new shipWreckObstacle());
   }
 
@@ -181,49 +177,28 @@ class Boat {
   constructor() {
     this.score = 0;
     this.image = boatImageUp;
-    this.redefineBoatSize();
-    this.x = canvas.width / 2 - this.width / 2;
-    this.y = canvas.height - this.height - 20;
-  }
-
-  redefineBoatSize() {
     this.width = this.image.width * 0.2;
     this.height = this.image.height * 0.2;
+    this.x = canvas.width / 2 - this.width / 2;
+    this.y = canvas.height - this.height - 20;
   }
 
   moveLeft() {
     this.x = this.x <= 75 ? this.x : this.x - 25;
     this.image = boatImageL;
-    this.redefineBoatSize();
-  }
-  moveRight() {
-    this.x = this.x >= 450 ? this.x : this.x + 25;
-    this.image = boatImageR;
-    this.redefineBoatSize();
-  }
-  moveUp() {
-    this.y -= 20;
-    this.image = boatImageUp;
-    this.redefineBoatSize();
-  }
-  moveDown() {
-    this.y += 20;
-    this.image = boatImageUp;
-    this.redefineBoatSize();
-    this.x = Math.max(this.x - 25, 25);
-    boats.img = boatImageL;
   }
   moveRight() {
     this.x = Math.min(this.x + 25, canvas.width - this.width - 25);
-    boats.img = boatImageR;
+    this.image = boatImageR;
   }
+
   moveUp() {
     this.y = Math.max(this.y - 20, 25);
-    boats.img = boatImageUp;
+    this.image = boatImageUp;
   }
   moveDown() {
     this.y = Math.min(this.y + 20, canvas.height - this.height - 20);
-    boats.img = boatImageUp;
+    this.image = boatImageUp;
   }
   increaseScore() {
     this.score += 1;
@@ -232,11 +207,6 @@ class Boat {
 
 class Obstacle {
   constructor() {
-    // // this.width = Math.max(
-    //   Math.floor(Math.random() * canvas.width * 0.65 * 0.85),
-    //   140
-    // );
-    // this.height = 20;
     let tempX =
       Math.floor(Math.random() * (canvas.width * 0.85)) +
       (canvas.width * 0.27) / 2;
@@ -356,8 +326,8 @@ class Alligator {
   constructor() {
     this.height = 50;
     this.width = 2.36 * this.height;
-    this.x = Math.floor(Math.random() * canvas.width);
-    this.y = Math.floor(Math.random() * canvas.height);
+    this.x = 100 + Math.floor(Math.random() * (canvas.width - 200));
+    this.y = 100 + Math.floor(Math.random() * (canvas.height - 200));
   }
 
   move(x, y) {
@@ -380,7 +350,6 @@ class Alligator {
       boat.y < this.y + this.height &&
       boat.y + boat.height > this.y
     ) {
-      console.log("collision detected");
       return true;
     }
     return false;
