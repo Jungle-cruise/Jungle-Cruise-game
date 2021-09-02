@@ -101,6 +101,8 @@ h1 {
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 0 8px rgb(207, 207, 207);
+  text-align: center;
+  background-color: cadetblue;
 }
 
 .boat-button {
@@ -128,6 +130,10 @@ h1 {
   font-size: 3rem;
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
+}
+
+#start-button:hover {
+  cursor: pointer;
 }
 
 .image-holder {

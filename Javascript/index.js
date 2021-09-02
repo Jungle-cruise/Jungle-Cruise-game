@@ -45,6 +45,8 @@ let animationID;
 let obstacleImages = [treeImage, vtreeImage];
 let shipWreckObstacles = [];
 
+document.getElementsByTagName("audio")[0].volume = 0.05;
+
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
     boat = new Boat();
@@ -241,7 +243,6 @@ class Obstacle {
       boat.y < this.y + this.height &&
       boat.y + boat.height > this.y
     ) {
-      console.log("collision detected");
       return true;
     }
     return false;
@@ -327,7 +328,7 @@ class Alligator {
     this.height = 50;
     this.width = 2.36 * this.height;
     this.x = 100 + Math.floor(Math.random() * (canvas.width - 200));
-    this.y = 100 + Math.floor(Math.random() * (canvas.height - 200));
+    this.y = Math.max(25, boat.y - 300);
   }
 
   move(x, y) {
