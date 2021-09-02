@@ -3,13 +3,13 @@ const ctx = canvas.getContext("2d");
 
 const boatImageUp = new Image();
 // Connects image to the image file
-boatImageUp.src = "../Assets/boatUp.png";
+boatImageUp.src = "./Assets/boatUp.png";
 
 const boatImageR = new Image();
-boatImageR.src = "../Assets/boatR.png";
+boatImageR.src = "./Assets/boatR.png";
 
 const boatImageL = new Image();
-boatImageL.src = "../Assets/boatL.png";
+boatImageL.src = "./Assets/boatL.png";
 
 let boats = {
   img: boatImageUp,
@@ -17,26 +17,26 @@ let boats = {
 
 const riverImage = new Image();
 // Connects image to the image file
-riverImage.src = "../Assets/background.jpg";
+riverImage.src = "./Assets/background.jpg";
 
 const alligatorImageR = new Image();
-alligatorImageR.src = "../Assets/alligator.png";
+alligatorImageR.src = "./Assets/alligator.png";
 
 const alligatorImageL = new Image();
-alligatorImageL.src = "../Assets/alligatorL.png";
+alligatorImageL.src = "./Assets/alligatorL.png";
 
 let alligatorLR = {
   img: alligatorImageR,
 };
 
 const treeImage = new Image();
-treeImage.src = "../Assets/treetrunkH.png";
+treeImage.src = "./Assets/treetrunkH.png";
 
 const vtreeImage = new Image();
-vtreeImage.src = "../Assets/treetrunk.png";
+vtreeImage.src = "./Assets/treetrunk.png";
 
 const shipwreckImage = new Image();
-shipwreckImage.src = "../Assets/wreck.png";
+shipwreckImage.src = "./Assets/wreck.png";
 
 let boat;
 let obstacles = [];
