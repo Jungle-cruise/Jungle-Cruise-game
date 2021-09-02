@@ -171,7 +171,7 @@ function updateCanvas() {
     }, 2000);
     setTimeout(() => {
       window.location.reload();
-    }, 7000);
+    }, 7500);
   } else {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);

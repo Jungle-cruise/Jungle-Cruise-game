@@ -97,12 +97,15 @@ h1 {
 #game-over {
   display: none;
   box-sizing: border-box;
+  width: 15rem;
+  height: 24rem;
   border: 1px solid black;
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 0 8px rgb(207, 207, 207);
   text-align: center;
-  background-color: cadetblue;
+  background-color: white;
+  font-size: x-large;
 }
 
 #game-over:hover {
@@ -152,6 +155,9 @@ h1 {
   font-size: 3rem;
   border-radius: 0.5rem;
   border: 2px solid darkgoldenrod;
+  width: 30rem;
+  display: flex;
+  align-self: flex-end;
 }
 
 #start-button:hover {
