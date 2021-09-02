@@ -214,11 +214,9 @@ class Boat {
 
 class Obstacle {
   constructor() {
-    let tempX =
-      Math.floor(Math.random() * (canvas.width * 0.85)) +
-      (canvas.width * 0.27) / 2;
-    if (this.width + tempX > canvas.width * 0.85) {
-      this.x = canvas.width * 0.85 - this.width;
+    let tempX = 100 + Math.floor(Math.random() * (canvas.width - 200));
+    if (this.width + tempX > canvas.width - 100) {
+      this.x = canvas.width - 100 - this.width;
     } else {
       this.x = tempX;
     }
@@ -254,7 +252,7 @@ class Obstacle {
   }
   // obstacles move down throughout frame
   moveDown() {
-    this.y += 2;
+    this.y += 1;
   }
 }
 
