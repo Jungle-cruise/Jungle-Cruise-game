@@ -86,7 +86,6 @@ function updateCanvas() {
   ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
   if (frame % 300 == 0) {
     obstacles.push(new Obstacle());
-    console.log(obstacles);
   }
 
   if (frame % 1700 == 0) {
@@ -203,8 +202,6 @@ function updateCanvas() {
     frame++;
     animationID = requestAnimationFrame(updateCanvas);
   }
-  // frame = frame + 1
-  // frame updates go here
 }
 
 class Boat {
