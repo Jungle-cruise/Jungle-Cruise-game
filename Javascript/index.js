@@ -116,7 +116,8 @@ function updateCanvas() {
       obstacle.updateScore();
     }
     if (obstacle.detectCollision(boat)) {
-      document.querySelector("audio").pause();
+      document.getElementById("jungle").pause();
+      document.getElementById("motor").pause();
       collisionDetectedBoolean = true;
       return;
     }
@@ -138,6 +139,8 @@ function updateCanvas() {
       obstacle.updateScore();
     }
     if (obstacle.detectCollision(boat)) {
+      document.getElementById("jungle").pause();
+      document.getElementById("motor").pause();
       collisionDetectedBoolean = true;
       return;
     }
@@ -152,7 +155,8 @@ function updateCanvas() {
   });
 
   if (alligator.detectCollision(boat)) {
-    document.querySelector("audio").pause();
+    document.getElementById("jungle").pause();
+    document.getElementById("motor").pause();
     collisionDetectedBoolean = true;
     // return;
   }
