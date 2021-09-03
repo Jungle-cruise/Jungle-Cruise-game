@@ -52,6 +52,7 @@ window.onload = () => {
     boat = new Boat();
     alligator = new Alligator();
     frame = 1;
+    document.getElementById("motor").play();
 
     // assign events to left, right, up and down arrow keys
     document.addEventListener("keydown", (e) => {

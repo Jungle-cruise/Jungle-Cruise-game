@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Trade+Winds&display=swap");
 
-body {
-}
-
 .game-body {
   margin: 0;
   padding: 0;
@@ -10,10 +7,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  /* flex-direction: row;
-  max-width: 100vw;
-  margin-top: 5vh;
-  max-height: 100vh; */
 }
 
 .boat-button {
