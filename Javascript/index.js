@@ -84,7 +84,7 @@ function updateCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   backgroundImage.draw();
   ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
-  if (frame % 230 == 0) {
+  if (frame % 300 == 0) {
     obstacles.push(new Obstacle());
     console.log(obstacles);
   }
@@ -108,7 +108,7 @@ function updateCanvas() {
       alligatorLR.img = alligatorImageL;
     }
   }
-  if (boat.score > 15) {
+  if (boat.score > 18) {
     ctx.drawImage(
       alligatorLR.img,
       alligator2.x,
@@ -349,7 +349,7 @@ const backgroundImage = {
   },
 };
 
-let alli = [-150, 750];
+let alli = [-50 * 2.36, 600];
 
 class Alligator {
   constructor() {
