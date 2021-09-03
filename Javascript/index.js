@@ -51,6 +51,7 @@ window.onload = () => {
     console.log(this);
     boat = new Boat();
     alligator = new Alligator();
+    alligator2 = new Alligator();
     frame = 1;
     document.getElementById("motor").play();
 
@@ -102,6 +103,21 @@ function updateCanvas() {
     );
     alligator.move(boat.x, boat.y);
     if (boat.x > alligator.x) {
+      alligatorLR.img = alligatorImageR;
+    } else {
+      alligatorLR.img = alligatorImageL;
+    }
+  }
+  if (boat.score > 15) {
+    ctx.drawImage(
+      alligatorLR.img,
+      alligator2.x,
+      alligator2.y,
+      alligator2.width,
+      alligator2.height
+    );
+    alligator2.move(boat.x, boat.y);
+    if (boat.x > alligator2.x) {
       alligatorLR.img = alligatorImageR;
     } else {
       alligatorLR.img = alligatorImageL;
@@ -160,6 +176,12 @@ function updateCanvas() {
     collisionDetectedBoolean = true;
     // return;
   }
+  if (alligator2.detectCollision(boat)) {
+    document.getElementById("jungle").pause();
+    document.getElementById("motor").pause();
+    collisionDetectedBoolean = true;
+    // return;
+  }
 
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
@@ -196,20 +218,20 @@ class Boat {
   }
 
   moveLeft() {
-    this.x = this.x <= 75 ? this.x : this.x - 25;
+    this.x = this.x <= 75 ? this.x : this.x - 10;
     this.image = boatImageL;
   }
   moveRight() {
-    this.x = Math.min(this.x + 25, canvas.width - this.width - 25);
+    this.x = Math.min(this.x + 10, canvas.width - this.width - 25);
     this.image = boatImageR;
   }
 
   moveUp() {
-    this.y = Math.max(this.y - 20, 25);
+    this.y = Math.max(this.y - 10, 25);
     this.image = boatImageUp;
   }
   moveDown() {
-    this.y = Math.min(this.y + 20, canvas.height - this.height - 20);
+    this.y = Math.min(this.y + 10, canvas.height - this.height - 20);
     this.image = boatImageUp;
   }
   increaseScore() {
