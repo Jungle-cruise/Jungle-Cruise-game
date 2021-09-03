@@ -84,7 +84,7 @@ function updateCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   backgroundImage.draw();
   ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
-  if (frame % 180 == 0) {
+  if (frame % 230 == 0) {
     obstacles.push(new Obstacle());
   }
 
