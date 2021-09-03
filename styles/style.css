@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  overflow: hidden;
 }
 
 .boat-button {
@@ -49,7 +50,7 @@ canvas {
 
 .row {
   display: flex;
-  margin-top: 16vh;
+  padding-top: 10px;
 }
 
 .div1 {
@@ -138,6 +139,10 @@ h1 {
 
 #home-button:hover {
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 3px 5px 3px #c7c7c7;
 }
 #start-button {
   color: #cc9238;
@@ -153,8 +158,13 @@ h1 {
   align-self: flex-end;
 }
 
-#start-button:hover {
+#start-button:hover,
+#start-button:focus {
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 5px 10px 5px #c7c7c7;
 }
 
 .firstdiv {

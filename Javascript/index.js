@@ -48,7 +48,6 @@ let shipWreckObstacles = [];
 window.onload = () => {
   document.getElementById("start-button").onclick = (e) => {
     e.currentTarget.disabled = true;
-    console.log(this);
     boat = new Boat();
     alligator = new Alligator();
     alligator2 = new Alligator();
@@ -87,6 +86,7 @@ function updateCanvas() {
   ctx.drawImage(boat.image, boat.x, boat.y, boat.width, boat.height);
   if (frame % 230 == 0) {
     obstacles.push(new Obstacle());
+    console.log(obstacles);
   }
 
   if (frame % 1700 == 0) {
@@ -291,9 +291,6 @@ class shipWreckObstacle {
     let tempX =
       Math.floor(Math.random() * (canvas.width * 0.8)) +
       (canvas.width * 0.27) / 2;
-    console.log(tempX);
-    console.log(this.width);
-    console.log(canvas.width);
     if (this.width + tempX > canvas.width * 0.8) {
       this.x = canvas.width * 0.8 - this.width;
     } else {
@@ -321,7 +318,6 @@ class shipWreckObstacle {
       boat.y < this.y + this.height &&
       boat.y + boat.height > this.y
     ) {
-      console.log("collision detected");
       return true;
     }
     return false;
@@ -353,12 +349,14 @@ const backgroundImage = {
   },
 };
 
+let alli = [-150, 750];
+
 class Alligator {
   constructor() {
     this.height = 50;
     this.width = 2.36 * this.height;
-    this.x = 100 + Math.floor(Math.random() * (canvas.width - 200));
-    this.y = Math.max(25, boat.y - 300);
+    this.x = alli[Math.floor(Math.random() * 2)];
+    this.y = 0;
   }
 
   move(x, y) {
